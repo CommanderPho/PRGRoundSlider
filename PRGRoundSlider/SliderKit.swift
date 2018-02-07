@@ -24,12 +24,12 @@ public class SliderKit : NSObject {
 
     //// Colors
 
-    public dynamic class var darkBlueColor: UIColor { return Cache.darkBlueColor }
-    public dynamic class var darkPinkColor: UIColor { return Cache.darkPinkColor }
+    @objc public dynamic class var darkBlueColor: UIColor { return Cache.darkBlueColor }
+    @objc public dynamic class var darkPinkColor: UIColor { return Cache.darkPinkColor }
 
     //// Drawing Methods
 
-    public dynamic class func drawSlider(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 90, height: 94), resizing: ResizingBehavior = .aspectFit, strokeColor: UIColor = UIColor(red: 0.259, green: 0.325, blue: 0.498, alpha: 1.000), thumbColor: UIColor = UIColor(red: 0.800, green: 0.322, blue: 0.322, alpha: 1.000), gradientBottomColor: UIColor = UIColor(red: 0.835, green: 0.412, blue: 0.404, alpha: 1.000), messageColor: UIColor = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1.000), innerStrokeColor: UIColor = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1.000), startEndTextColor: UIColor = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1.000), progress: CGFloat = 0.162, endAngle: CGFloat = -30, startAngle: CGFloat = 210, strokeWidth: CGFloat = 2, indicatorMessage: String = "", startText: String = "start", endText: String = "end") {
+    @objc public dynamic class func drawSlider(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 90, height: 94), resizing: ResizingBehavior = .aspectFit, strokeColor: UIColor = UIColor(red: 0.259, green: 0.325, blue: 0.498, alpha: 1.000), thumbColor: UIColor = UIColor(red: 0.800, green: 0.322, blue: 0.322, alpha: 1.000), gradientBottomColor: UIColor = UIColor(red: 0.835, green: 0.412, blue: 0.404, alpha: 1.000), messageColor: UIColor = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1.000), innerStrokeColor: UIColor = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1.000), startEndTextColor: UIColor = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1.000), progress: CGFloat = 0.162, endAngle: CGFloat = -30, startAngle: CGFloat = 210, strokeWidth: CGFloat = 2, indicatorMessage: String = "", startText: String = "start", endText: String = "end") {
         //// General Declarations
         let context = UIGraphicsGetCurrentContext()!
         
@@ -99,7 +99,7 @@ public class SliderKit : NSObject {
         let endTextFieldRect = CGRect(x: -8, y: -3.5, width: 16, height: 7)
         let endTextFieldStyle = NSMutableParagraphStyle()
         endTextFieldStyle.alignment = .center
-        let endTextFieldFontAttributes = [NSFontAttributeName: UIFont.systemFont(ofSize: 5), NSForegroundColorAttributeName: startEndTextColor, NSParagraphStyleAttributeName: endTextFieldStyle]
+        let endTextFieldFontAttributes = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 5), NSAttributedStringKey.foregroundColor: startEndTextColor, NSAttributedStringKey.paragraphStyle: endTextFieldStyle]
 
         let endTextFieldTextHeight: CGFloat = endText.boundingRect(with: CGSize(width: endTextFieldRect.width, height: CGFloat.infinity), options: .usesLineFragmentOrigin, attributes: endTextFieldFontAttributes, context: nil).height
         context.saveGState()
@@ -129,7 +129,7 @@ public class SliderKit : NSObject {
         let startTextFieldRect = CGRect(x: -8.17, y: -3.59, width: 16.33, height: 7)
         let startTextFieldStyle = NSMutableParagraphStyle()
         startTextFieldStyle.alignment = .center
-        let startTextFieldFontAttributes = [NSFontAttributeName: UIFont.systemFont(ofSize: 5), NSForegroundColorAttributeName: startEndTextColor, NSParagraphStyleAttributeName: startTextFieldStyle]
+        let startTextFieldFontAttributes = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 5), NSAttributedStringKey.foregroundColor: startEndTextColor, NSAttributedStringKey.paragraphStyle: startTextFieldStyle]
 
         let startTextFieldTextHeight: CGFloat = startText.boundingRect(with: CGSize(width: startTextFieldRect.width, height: CGFloat.infinity), options: .usesLineFragmentOrigin, attributes: startTextFieldFontAttributes, context: nil).height
         context.saveGState()
@@ -160,7 +160,7 @@ public class SliderKit : NSObject {
         oval2Path.stroke()
         let oval2Style = NSMutableParagraphStyle()
         oval2Style.alignment = .center
-        let oval2FontAttributes = [NSFontAttributeName: UIFont(name: "HelveticaNeue", size: 8)!, NSForegroundColorAttributeName: messageColor, NSParagraphStyleAttributeName: oval2Style]
+        let oval2FontAttributes = [NSAttributedStringKey.font: UIFont(name: "HelveticaNeue", size: 8)!, NSAttributedStringKey.foregroundColor: messageColor, NSAttributedStringKey.paragraphStyle: oval2Style]
 
         let oval2TextHeight: CGFloat = indicatorMessage.boundingRect(with: CGSize(width: oval2Rect.width, height: CGFloat.infinity), options: .usesLineFragmentOrigin, attributes: oval2FontAttributes, context: nil).height
         context.saveGState()
@@ -184,7 +184,7 @@ public class SliderKit : NSObject {
 
     }
 
-    public dynamic class func drawRangeSlider(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 90, height: 94), resizing: ResizingBehavior = .aspectFit, strokeColor: UIColor = UIColor(red: 0.259, green: 0.325, blue: 0.498, alpha: 1.000), thumbColor: UIColor = UIColor(red: 0.800, green: 0.322, blue: 0.322, alpha: 1.000), gradientBottomColor: UIColor = UIColor(red: 0.835, green: 0.412, blue: 0.404, alpha: 1.000), messageColor: UIColor = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1.000), innerStrokeColor: UIColor = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1.000), startEndTextColor: UIColor = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1.000), endAngle: CGFloat = -30, startAngle: CGFloat = 210, strokeWidth: CGFloat = 2, indicatorMessage: String = "", startText: String = "start", endText: String = "end", startValue: CGFloat = 0.351, endValue: CGFloat = 0.708) {
+    @objc public dynamic class func drawRangeSlider(frame targetFrame: CGRect = CGRect(x: 0, y: 0, width: 90, height: 94), resizing: ResizingBehavior = .aspectFit, strokeColor: UIColor = UIColor(red: 0.259, green: 0.325, blue: 0.498, alpha: 1.000), thumbColor: UIColor = UIColor(red: 0.800, green: 0.322, blue: 0.322, alpha: 1.000), gradientBottomColor: UIColor = UIColor(red: 0.835, green: 0.412, blue: 0.404, alpha: 1.000), messageColor: UIColor = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1.000), innerStrokeColor: UIColor = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1.000), startEndTextColor: UIColor = UIColor(red: 0.000, green: 0.000, blue: 0.000, alpha: 1.000), endAngle: CGFloat = -30, startAngle: CGFloat = 210, strokeWidth: CGFloat = 2, indicatorMessage: String = "", startText: String = "start", endText: String = "end", startValue: CGFloat = 0.351, endValue: CGFloat = 0.708) {
         //// General Declarations
         let context = UIGraphicsGetCurrentContext()!
         
@@ -257,7 +257,7 @@ public class SliderKit : NSObject {
         let endTextFieldRect = CGRect(x: -8, y: -3.5, width: 16, height: 7)
         let endTextFieldStyle = NSMutableParagraphStyle()
         endTextFieldStyle.alignment = .center
-        let endTextFieldFontAttributes = [NSFontAttributeName: UIFont.systemFont(ofSize: 5), NSForegroundColorAttributeName: startEndTextColor, NSParagraphStyleAttributeName: endTextFieldStyle]
+        let endTextFieldFontAttributes = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 5), NSAttributedStringKey.foregroundColor: startEndTextColor, NSAttributedStringKey.paragraphStyle: endTextFieldStyle]
 
         let endTextFieldTextHeight: CGFloat = endText.boundingRect(with: CGSize(width: endTextFieldRect.width, height: CGFloat.infinity), options: .usesLineFragmentOrigin, attributes: endTextFieldFontAttributes, context: nil).height
         context.saveGState()
@@ -287,7 +287,7 @@ public class SliderKit : NSObject {
         let startTextFieldRect = CGRect(x: -8.17, y: -3.59, width: 16.33, height: 7)
         let startTextFieldStyle = NSMutableParagraphStyle()
         startTextFieldStyle.alignment = .center
-        let startTextFieldFontAttributes = [NSFontAttributeName: UIFont.systemFont(ofSize: 5), NSForegroundColorAttributeName: startEndTextColor, NSParagraphStyleAttributeName: startTextFieldStyle]
+        let startTextFieldFontAttributes = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 5), NSAttributedStringKey.foregroundColor: startEndTextColor, NSAttributedStringKey.paragraphStyle: startTextFieldStyle]
 
         let startTextFieldTextHeight: CGFloat = startText.boundingRect(with: CGSize(width: startTextFieldRect.width, height: CGFloat.infinity), options: .usesLineFragmentOrigin, attributes: startTextFieldFontAttributes, context: nil).height
         context.saveGState()
@@ -318,7 +318,7 @@ public class SliderKit : NSObject {
         oval2Path.stroke()
         let oval2Style = NSMutableParagraphStyle()
         oval2Style.alignment = .center
-        let oval2FontAttributes = [NSFontAttributeName: UIFont(name: "HelveticaNeue", size: 8)!, NSForegroundColorAttributeName: messageColor, NSParagraphStyleAttributeName: oval2Style]
+        let oval2FontAttributes = [NSAttributedStringKey.font: UIFont(name: "HelveticaNeue", size: 8)!, NSAttributedStringKey.foregroundColor: messageColor, NSAttributedStringKey.paragraphStyle: oval2Style]
 
         let oval2TextHeight: CGFloat = indicatorMessage.boundingRect(with: CGSize(width: oval2Rect.width, height: CGFloat.infinity), options: .usesLineFragmentOrigin, attributes: oval2FontAttributes, context: nil).height
         context.saveGState()

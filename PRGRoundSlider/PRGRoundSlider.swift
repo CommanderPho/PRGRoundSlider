@@ -89,19 +89,19 @@ class PRGRoundSlider: UIView {
 
 
 
-    var messageForValue: ((CGFloat)->(String))? {
+    @objc var messageForValue: ((CGFloat)->(String))? {
         didSet {
             self.message = messageForValue?(value) ?? ""
         }
     }
     
-    var message: String = "" {
+    @objc var message: String = "" {
         didSet {
             setNeedsDisplay()
         }
     }
     
-    init(frame: CGRect, value: CGFloat, strokeColor: UIColor, strokeWidth: CGFloat, gradientColor: UIColor, startAngle: CGFloat, endAngle: CGFloat, startText: String, endText: String, messageForValue: ((_ value: CGFloat)->(String))?) {
+    @objc init(frame: CGRect, value: CGFloat, strokeColor: UIColor, strokeWidth: CGFloat, gradientColor: UIColor, startAngle: CGFloat, endAngle: CGFloat, startText: String, endText: String, messageForValue: ((_ value: CGFloat)->(String))?) {
         super.init(frame: frame)
         self.strokeColor = strokeColor
         self.gradientColor = gradientColor
@@ -127,12 +127,12 @@ class PRGRoundSlider: UIView {
        
     }
     
-    func setupOrientationCheck(){
+    @objc func setupOrientationCheck(){
         NotificationCenter.default.addObserver(self, selector: #selector(rotated), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
 
     }
     
-    func rotated(){
+    @objc func rotated(){
         setNeedsDisplay()
     }
     
@@ -173,7 +173,7 @@ class PRGRoundSlider: UIView {
         updateRotationWithTouches(touches)
     }
 
-    func updateRotationWithTouches(_ touches: Set<NSObject>) {
+    @objc func updateRotationWithTouches(_ touches: Set<NSObject>) {
         if let touch = touches[touches.startIndex] as? UITouch {
             let rotation = rotationForLocation(touch.location(in: self))
             
